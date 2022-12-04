@@ -1,0 +1,22 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "A gateway to all Seny microservices",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "build:watch": "onchange 'src/**/*.ts' -- npm run build",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johhny0/seny-gateway.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johhny0/seny-gateway/issues"
+  },
+  "homepage": "https://github.com/johhny0/seny-gateway#readme"
+}
