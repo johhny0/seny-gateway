@@ -1,12 +1,14 @@
 {
   "name": "gateway",
   "version": "1.0.0",
-  "description": "A gateway to all Seny microservices",
-  "main": "src/server.ts",
+  "description": "",
+  "main": ".eslintrc.js",
   "scripts": {
-    "start": "ts-node src/server.ts",
-    "build:watch": "onchange 'src/**/*.ts' -- npm run build",
-    "build": "tsc"
+    "dev": "nodemon src/index.ts",
+    "build": "npm run lint && rimraf dist/ && tsc",
+    "start": "npm run build && node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,18 @@
   "bugs": {
     "url": "https://github.com/johhny0/seny-gateway/issues"
   },
-  "homepage": "https://github.com/johhny0/seny-gateway#readme"
+  "homepage": "https://github.com/johhny0/seny-gateway#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.12",
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "@typescript-eslint/parser": "^5.46.0",
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
 }
