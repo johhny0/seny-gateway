@@ -1,0 +1,7 @@
+[
+    {
+        "name": "Users API",
+        "path": "/users",
+        "url": "http://localhost:3001/"
+    }
+]

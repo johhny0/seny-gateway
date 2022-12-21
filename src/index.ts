@@ -1,20 +1,36 @@
-import express, { Router, Request, Response } from "express"
-
+import express from "express";
+import morgan from "morgan";
+import helmet from "helmet";
 import dotenv from "dotenv";
+import cors from "cors";
+import httpProxy from "express-http-proxy";
+
+import servers from "../servers.json";
 
 dotenv.config();
 
-const app = express();
+//TODO: ADD SWAGGER
+//TODO: ADD JWT
+//TODO: ADD ORM
+//TODO: REFACTOR - CONFIG
 
-const route = Router();
+async function main() {
+    const app = express();
 
-app.use(express.json());
+    app.use(cors());
+    app.use(morgan("dev"));
+    app.use(helmet());
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }))
 
-route.all("/", (req: Request, res: Response) => {
-    res.json({ msg: "Ok" })
-})
 
-app.use(route);
+    app.get("/", (req, res) => res.json({ msg: "Middleware Runnin!" }));
 
-app.listen(process.env.API_PORT, () => console.log(`Server running at: http://localhost:${process.env.API_PORT}`));
+    servers.forEach((server) => {
+        app.use(server.path, httpProxy(server.url));
+    });
 
+    app.listen(process.env.API_PORT, () => console.log(`Server running at: http://localhost:${process.env.API_PORT}`));
+}
+
+main();
