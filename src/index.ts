@@ -1,36 +1,26 @@
-import express from "express";
-import morgan from "morgan";
-import helmet from "helmet";
-import dotenv from "dotenv";
-import cors from "cors";
-import httpProxy from "express-http-proxy";
+import { EnvConfig } from "./envConfig";
+import { ServerService } from "./servers/serverService"
+import { ExpressService } from "./api/expressService";
 
-import servers from "../servers.json";
+//https://cloudnweb.dev/2019/09/building-a-production-ready-node-js-app-with-typescript-and-docker/
+//https://www.npmjs.com/package/http-proxy-middleware
 
-dotenv.config();
-
+//TODO: ADD TESTS
 //TODO: ADD SWAGGER
 //TODO: ADD JWT
 //TODO: ADD ORM
-//TODO: REFACTOR - CONFIG
 
 async function main() {
-    const app = express();
+    const config = new EnvConfig();
+    config.load();
 
-    app.use(cors());
-    app.use(morgan("dev"));
-    app.use(helmet());
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: true }))
+    const expressService = new ExpressService()
+    const app = expressService.config(config);
 
-
-    app.get("/", (req, res) => res.json({ msg: "Middleware Runnin!" }));
-
-    servers.forEach((server) => {
-        app.use(server.path, httpProxy(server.url));
-    });
-
-    app.listen(process.env.API_PORT, () => console.log(`Server running at: http://localhost:${process.env.API_PORT}`));
+    const serverService = new ServerService();
+    serverService.loadRoutes(app);
+    
+    app.listen(config.port, () => console.log(`${config.applicationName}. Server running at: ${config.host}:${config.port}`));
 }
 
 main();
