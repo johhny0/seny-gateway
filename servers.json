@@ -3,5 +3,10 @@
         "name": "Users API",
         "path": "/users",
         "url": "http://localhost:3001/"
+    },
+    {
+        "name": "Auth API",
+        "path": "/auth",
+        "url": "http://localhost:3002/"
     }
 ]

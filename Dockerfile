@@ -1,15 +1,25 @@
-FROM node:14 as base
+#Build stage
+FROM node:20-alpine AS build
 
-WORKDIR /home/node/app
+WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json .
 
-RUN npm i
+RUN npm install
 
 COPY . .
 
-FROM base as production
-
-ENV NODE_PATH=./build
-
 RUN npm run build
+
+#Production stage
+FROM node:20-alpine AS production
+
+WORKDIR /app
+
+COPY package*.json .
+
+RUN npm ci --only=production
+
+COPY --from=build /app/dist ./dist
+
+CMD ["node", "dist/index.js"]

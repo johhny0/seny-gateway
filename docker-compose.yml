@@ -1,17 +1,13 @@
-version: '3.7'
-
 services:
   seny-gateway:
+    container_name: seny-gateway
     build:
       context: .
-      dockerfile: Dockerfile
-      target: base
+      target: build
     volumes:
-      - ./src:/home/node/app/src
-      - ./nodemon.json:/home/node/app/nodemon.json
-    container_name: seny-gateway
-    expose:
-      - '3000'
+    - ./:/app
+    - /app/node_modules
     ports:
-      - '3000:3000'
+    - 80:3000
     command: npm run dev
+   
