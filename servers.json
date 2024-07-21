@@ -8,5 +8,25 @@
         "name": "Auth API",
         "path": "/auth",
         "url": "http://localhost:3002/"
+    },
+    {
+        "name": "Ark API",
+        "path": "/ark",
+        "url": "http://localhost:3003/"
+    },
+    {
+        "name": "Unopar API",
+        "path": "/unopar",
+        "url": "http://localhost:3004/"
+    },
+    {
+        "name": "Bar API",
+        "path": "/bar",
+        "url": "http://localhost:3005/"
+    },
+    {
+        "name": "Tour Guide API",
+        "path": "/tourguide",
+        "url": "http://localhost:3006/"
     }
 ]

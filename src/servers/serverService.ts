@@ -11,6 +11,6 @@ export class ServerService {
 
         this.servers.forEach((server: Server) => app.use(server.path, httpProxy(server.url)));
 
-        app.all("*", (_, res) => res.status(404).json({ msg: "Route Does Not Exists! 🛑🤚" }))
+        app.all("*", (_, res) => res.status(404).json({ msg: "Middleware: Route Does Not Exists! 🛑🤚" }))
     }
 }
