@@ -2,31 +2,31 @@
     {
         "name": "Users API",
         "path": "/users",
-        "url": "http://localhost:3001/"
+        "url": "http://host.docker.internal:3001/"
     },
     {
         "name": "Auth API",
         "path": "/auth",
-        "url": "http://localhost:3002/"
+        "url": "http://host.docker.internal:3002/"
     },
     {
         "name": "Ark API",
         "path": "/ark",
-        "url": "http://localhost:3003/"
+        "url": "http://host.docker.internal:3003/"
     },
     {
         "name": "Unopar API",
         "path": "/unopar",
-        "url": "http://localhost:3004/"
+        "url": "http://host.docker.internal:3004/"
     },
     {
         "name": "Bar API",
         "path": "/bar",
-        "url": "http://localhost:3005/"
+        "url": "http://host.docker.internal:3005/"
     },
     {
         "name": "Tour Guide API",
         "path": "/tourguide",
-        "url": "http://localhost:3006/"
+        "url": "http://host.docker.internal:3006/"
     }
 ]

@@ -1,5 +1,5 @@
 services:
-  seny:
+  gateway:
     container_name: seny-gateway
     build:
       context: .
@@ -10,4 +10,4 @@ services:
     ports:
     - 3000:3000
     command: npm run dev
-   
+    
