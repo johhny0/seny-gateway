@@ -10,4 +10,11 @@ services:
     ports:
     - 3000:3000
     command: npm run dev
-    
+    networks:
+      - seny-network-gateway
+      
+networks:
+  seny-network-gateway:
+    driver: bridge
+    name: seny-network
+    external: true
